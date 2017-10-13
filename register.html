@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="frmRegister" class="cmxform">
+        <p>
+            <h1>Register Form</h1>
+        </p>
+        <p>
+            <label for="firstname">Firstname</label>
+            <input type="text" id="firstname" name="firstname">
+        </p>
+
+        <p>
+            <label for="lastname">Lastname</label>
+            <input type="text" id="lastname" name="lastname">
+        </p>
+
+        <p>
+            <label for="lastname">Email</label>
+            <input type="text" id="email" name="email">
+        </p>
+
+        <p>
+            <input type="submit" id="btnRegister">
+            <input type="reset" id="btnReset">
+        </p>
+    </form>
+
+    <link rel="stylesheet" href="/asset/css/cmxform.css">
+
+    <style>
+        #frmRegister label {
+            width: 77px;
+            display: inline-block;
+        }
+
+        #frmRegister label.error{
+            display: block;
+            margin-left: 80px;
+            width:250px;
+        }
+
+        #frmRegister #btnRegister{
+            margin-left: 80px;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        var registerValidate=    $('#frmRegister').validate({
+                rules: {
+                    firstname: "required",
+                    lastname: "required",
+                    email: {
+                        "required": true,
+                        "email": true
+                    }
+                },
+                messages: {
+                    firstname: "Please enter your firstname",
+                    lastname: "Please enter your lastname",
+                    email: "Please enter your email"
+                }
+            });
+
+            $('#btnReset').click(function(){
+                registerValidate.destroy();
+            })
+        });
+
+    </script>
+</body>
+
+</html>

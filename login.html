@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <form id="form" class="cmxform" action="" method="get" enctype="multipart/form-data" novalidate="novalidate">
+        <div class="name">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="txtName" required aria-required="true">
+        </div>
+        <div class="lastname">
+            <label for="lastname">Lastname:</label>
+            <input type="text" name="lastname" id="txtId" required>
+        </div>
+        <div class="action">
+            <input type="submit" value="Register" id="btnRegister">
+            <input type="reset" id="btnReset" value="btnReset">
+        </div>
+    </form>
+
+    <link rel="stylesheet" href="/asset/css/cmxform.css">
+    <style>
+            #form div{
+                padding: 5px 10px 7px;
+            }
+            #form label {
+                width: 77px;
+                display: inline-block;
+            }
+
+            #form .action{
+                margin-left: 80px;
+            }
+
+            #form label.error{
+                margin-left:77px;
+                width:250px;                
+            }
+        </style>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+    <script>
+
+        var frmValidate;
+
+        //ถ้า validate ผ่านจะทำงานที่ฟังก์ชันนี้
+        $.validator.setDefaults({
+            submitHandler:function(){
+                console.log('submitted');
+            }
+        })
+        $().ready(function(){
+            
+            //สั่งให้ validate
+            frmValidate = $('#form').validate();
+
+            //ล้างการ validate ทิ้ง
+            $('#btnReset').click(function(){
+                frmValidate.destroy();
+            })
+        });
+
+
+    </script>
+</body>
+</html>

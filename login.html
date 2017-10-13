@@ -47,6 +47,7 @@
 
     <script>
 
+        //กำหนดตัวแปรสำหรับเก็บค่า validate
         var frmValidate;
 
         //ถ้า validate ผ่านจะทำงานที่ฟังก์ชันนี้
@@ -54,8 +55,9 @@
             submitHandler:function(){
                 console.log('submitted');
             }
-        })
-        $().ready(function(){
+        });
+
+        $(document).ready(function(){
             
             //สั่งให้ validate
             frmValidate = $('#form').validate();

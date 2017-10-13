@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="" id="frmRegister" class="cmxform">
+    <form id="frmRegister" class="cmxform">
         <p>
             <h1>Register Form</h1>
         </p>
@@ -62,7 +62,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 
     <script>
+         //ถ้า validate ผ่านจะทำงานที่ฟังก์ชันนี้
+         $.validator.setDefaults({
+            submitHandler:function(){
+                console.log('submitted');
+            }
+        });
+
+        
         $(document).ready(function () {
+            
             var registerValidate = $('#frmRegister').validate({
                 rules: {
                     firstname: "required",

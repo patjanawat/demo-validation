@@ -28,26 +28,32 @@
         </p>
 
         <p>
+            <label for="agree">Agree policy</label>
+            <input type="checkbox" name="agree" id="chkAgree">
+        </p>
+
+        <p>
             <input type="submit" id="btnRegister">
             <input type="reset" id="btnReset">
         </p>
+
     </form>
 
     <link rel="stylesheet" href="/asset/css/cmxform.css">
 
     <style>
         #frmRegister label {
-            width: 77px;
+            width: 90px;
             display: inline-block;
         }
 
-        #frmRegister label.error{
+        #frmRegister label.error {
             display: block;
-            margin-left: 80px;
-            width:250px;
+            margin-left: 95px;
+            width: 250px;
         }
 
-        #frmRegister #btnRegister{
+        #frmRegister #btnRegister {
             margin-left: 80px;
         }
     </style>
@@ -57,23 +63,27 @@
 
     <script>
         $(document).ready(function () {
-        var registerValidate=    $('#frmRegister').validate({
+            var registerValidate = $('#frmRegister').validate({
                 rules: {
                     firstname: "required",
                     lastname: "required",
                     email: {
                         "required": true,
                         "email": true
+                    },
+                    agree:{
+                        "required":true                        
                     }
                 },
                 messages: {
                     firstname: "Please enter your firstname",
                     lastname: "Please enter your lastname",
-                    email: "Please enter your email"
+                    email: "Please enter your email",
+                    agree:"Please accept our policy"
                 }
             });
 
-            $('#btnReset').click(function(){
+            $('#btnReset').click(function () {
                 registerValidate.destroy();
             })
         });

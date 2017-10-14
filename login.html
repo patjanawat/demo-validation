@@ -1,74 +1,157 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script> -->
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/additional-methods.min.js"></script>
+
 </head>
+
 <body>
-    <form id="form" class="cmxform" action="" method="get" enctype="multipart/form-data" novalidate="novalidate">
+    <form id="form" novalidate="novalidate">
+        <p class="">
+            <h1>
+                :: Login System ::
+            </h1>
+        </p>
         <div class="name">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="txtName" required aria-required="true">
+            <label for="name">Email:</label>
+            <input type="text" name="email" id="txt_email" required aria-required="true">
         </div>
         <div class="lastname">
-            <label for="lastname">Lastname:</label>
-            <input type="text" name="lastname" id="txtId" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="txt_password" required aria-required="true">
         </div>
-        <div class="action">
-            <input type="submit" value="Register" id="btnRegister">
-            <input type="reset" id="btnReset" value="btnReset">
-        </div>
+        <p class="action">
+            <input type="submit" value="Login" id="btnRegister">
+            <input type="reset" value="Cancel" id="btnReset">
+        </p>
     </form>
 
     <link rel="stylesheet" href="/asset/css/cmxform.css">
     <style>
-            #form div{
-                padding: 5px 10px 7px;
-            }
-            #form label {
-                width: 77px;
-                display: inline-block;
-            }
+        #form div {
+            padding: 5px 10px 7px;
+        }
 
-            #form .action{
-                margin-left: 80px;
-            }
+        #form label {
+            width: 77px;
+            display: inline-block;
+        }
 
-            #form label.error{
-                margin-left:77px;
-                width:250px;                
-            }
-        </style>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+        #form .action {
+            margin-left: 90px;
+        }
+
+        #form label.error {
+            margin-left: 10px;
+            width: 250px;
+        }
+    </style>
+
 
     <script>
 
         //กำหนดตัวแปรสำหรับเก็บค่า validate
         var frmValidate;
+        
+        /************************** loading ***********************/
+        // var loader = jQuery('<div id="loader"><img src="/asset/images/loading.gif" alt="loading..."></div>')
+        //     .css({
+        //         position: "relative",
+        //         top: "1em",
+        //         left: "25em",
+        //         display: "inline"
+        //     })
+        //     .appendTo("body")
+        //     .hide();
 
-        //ถ้า validate ผ่านจะทำงานที่ฟังก์ชันนี้
-        $.validator.setDefaults({
-            submitHandler:function(){
-                console.log('submitted');
+        // $().ajaxStart(function () {
+        //     loader.show();
+        // }).ajaxStop(function () {
+        //     loader.hide();
+        // }).ajaxError(function (a, b, e) {
+        //     throw e;
+        // });
+        /*************************************************************/
+
+        // $('#idของform').validate({
+        //     //กฏการตรวจสอบ
+        //     rules:{
+        //         //rule1 : condition,
+        //         //rule2 : condition
+        //     },
+        //     //แสดงข้อความ เมื่อตรวจสอบ ไม่ผ่าน
+        //     messages: {
+        //         //rule1: message,
+        //         //rule2: message
+        //     },
+        //     //ตรวจสอบผ่านทุก rules แล้วจะทำคำสั่งในนี้
+        //     submitHandler: function (form) {
+        //         //ใส่คำสั่งที่ต้องการให้ทำงานไว้ในนี้
+        //     }
+        // });
+
+        //สั่งให้ validate
+        frmValidate = $('#form').validate({
+            rules: {
+                password:"required",
+                email: {
+                    "required": true,
+                    "email": true
+                }
+            },
+            messages: {
+                email: "Please enter your email!",
+                password: "Please enter your password!"
+            },            
+            submitHandler: function (form) {
+               //ถ้า validate ผ่านจะเข้ามาทำคำนั่งในนี้
+
+                //เก็บ email และ password เก้บไว้ในตัวแปร
+                var _email = $(form).find('#txt_email').val();
+                var _password = $(form).find('#txt_password').val();
+
+                //ล็อกอินเข้าระบบ โดยใช้ ajax
+                $.ajax({
+                    url: 'https://reqres.in/api/login',//ล็อกอินสำเร็จ
+                    type: "POST",
+                    data: {
+                        "email": _email,
+                       "password": _password //Comment ถ้าต้องการทดสอบกรณี ล็อกอินไม่สำเร็จ
+                    },
+                    success: function (response) {
+                        alert('Login success.');
+                        // console.log('Login success');
+                        // console.log(response);
+
+                        location="/index.html";
+                    },
+                    error:function(error){
+                        console.log(error.responseText);
+                        console.log('Login failure.');
+                    }
+                });
+
+                return false;
             }
         });
 
-        $(document).ready(function(){
-            
-            //สั่งให้ validate
-            frmValidate = $('#form').validate();
-
-            //ล้างการ validate ทิ้ง
-            $('#btnReset').click(function(){
-                frmValidate.destroy();
-            })
+        //ล้างการ validate ทิ้ง
+        $('#btnReset').click(function () {
+            frmValidate.resetForm();
         });
-
 
     </script>
 </body>
+
 </html>

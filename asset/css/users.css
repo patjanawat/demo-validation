@@ -1,0 +1,12 @@
+.users{
+    margin-top: 20px;
+}
+
+.template-hide{
+    display: none;
+}
+
+.user-img img{
+    height: 160px;
+    border-radius: 15px;
+}

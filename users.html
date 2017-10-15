@@ -8,36 +8,57 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
         crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/node_modules/startbootstrap-simple-sidebar/css/simple-sidebar.css">
     <link rel="stylesheet" href="/asset/css/users.css">
+    <style>
+        .users {
+            margin-top: 20px;
+        }
+
+        .template-hide {
+            display: none;
+        }
+
+        .user-img img {
+            height: 160px;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 
 <body>
-     <!-- Header  -->
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Bootstrap demo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/users.html">Users</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/login.html">Logout</a>
-                </li>                
-              </ul>
-            </div>
-          </nav>
-    <!-- End Header -->
+    <div class="alert alert-primary" role="alert">
+    </div>
 
-    <!-- Body  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <a class="navbar-brand alert alert-warning" role="alert" href="#">Bootstrap demo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link alert alert-danger" role="alert" href="/index.html">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link alert alert-danger" role="alert" href="/users.html">Users </a>
+
+                    <li class="nav-item ">
+                        <a class="nav-link alert alert-danger" role="alert" href="/resources.html">Resources</a>
+                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link alert alert-danger" role="alert" href="/login.html">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
     <div class="container">
 
         <div class="users template template-hide">
@@ -51,31 +72,32 @@
                     <form>
                         <div class="form-group">
                             <label for="fisname">Firstname</label>
-                            <input type="text" name="fistname" class="txt_firstname form-control" aria-describedby="firstnameHelp" placeholder="Firstname">
+                            <input type="text" name="fistname" readonly class="txt_firstname form-control" aria-describedby="firstnameHelp" placeholder="Firstname">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Lastname</label>
-                            <input type="text" name="lastname" class="txt_lastname form-control" placeholder="Lastname">
+                            <input type="text" name="lastname" readonly class="txt_lastname form-control" placeholder="Lastname">
                         </div>
-                    </form>
-
+                        <div class="form-group">
+                            <input type="button" class="btn btn-primary btn_edit" value="แก้ไข" />
+                            <input type="button" class="btn btn-danger btn_del" value="ลบ" />
+                            <input type="button" class="btn btn-warning btn_cancel" value="ยกเลิก" />
+                        </div>
                 </div>
+                </form>
+
             </div>
         </div>
-
     </div>
 
-
-    <!-- Include javascript -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
 
-    <!-- My script -->
-    <script src="/asset/js/user.js"></script>
+    <script src="/asset/js/user.js"></script>    
 </body>
 
 </html>

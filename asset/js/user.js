@@ -24,10 +24,28 @@ $(document).ready(function () {
                     $(template).find('.img').attr('src',user.avatar);
                     
                     $(template)
-                    .attr('id','user_'+user.id)
+                    .attr('id',user.id)
                     .removeClass('template-hide')
                     .removeClass('template')
                     .appendTo('.container');
+                });
+
+                $('.btn_edit').on('click', function (e) {
+                    e.stopPropagation();
+
+                    var el = $(this);
+                    console.log(el);
+
+                    // var _firstname = $('.txt_firstname').val();                 
+                    var _parent = $(el).closest('.users');
+
+                    var _id = $(_parent).attr('id');
+                    var _fistname= $(_parent).find('.txt_firstname').val();
+                    var _lastname = $(_parent).find('.txt_lastname').val();
+
+                    console.log("id:"+_id);
+                    console.log("firstname:"+ _fistname);
+                    console.log("lastname:"+_lastname);
                 });
 
             }

@@ -18,3 +18,45 @@ Sidebar: <br/>
 demo: https://blackrockdigital.github.io/startbootstrap-simple-sidebar/<br/>
 Github: https://github.com/BlackrockDigital/startbootstrap-simple-sidebar<br/>
 
+
+#simple json <br/>
+json = ข้อความธรรมดา<br/>
+ประกอบด้วย: key:value<br/>
+รูปแบบ: <br/>
+่json object:<br/>
+{<br/>
+    key1:value,<br/>
+    key2:value,<br/>
+    key3:value<br/>
+}<br/>
+<br/>
+json array:<br/>
+{<br/>
+    key: value,<br/>
+    //อาร์เรย์<br/>
+    key:[<br/>
+        {<br/>
+            key1:value, key2:value<br/>
+        },<br/>
+        {<br/>
+            key3:value<br/>
+        },<br/>
+        {<br/>
+            /////
+        },<br/>
+        {<br/>
+
+        }<br/>
+    ]<br/>
+}<br/>
+
+#ตัวอย่าง<br/>
+{id: 1, first_name: "George", last_name: "Bluth"}<br/>
+
+Json 1:<br/>
+key: id,<br/>
+value: 1<br/>
+
+key:first_name,<br/>
+value: "George"<br/>
+
